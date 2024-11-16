@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-background text-custom-white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-light;
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-primary hover:bg-primary-light text-white px-4 py-2 rounded-lg transition-all transform hover:scale-105;
+}
+
+.btn-secondary {
+  @apply bg-secondary hover:bg-secondary-light text-white px-4 py-2 rounded-lg transition-all transform hover:scale-105;
+}
+
+/* Card styles */
+.card {
+  @apply bg-background-card rounded-lg border border-background-light hover:border-secondary/20 transition-all;
+}
+
+/* Input styles */
+.input {
+  @apply bg-background-card border border-background-light rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-secondary focus:border-transparent;
+}
+
+/* Navigation styles */
+.nav-item {
+  @apply text-custom-white/70 hover:text-white transition-colors;
+}
+
+.nav-item.active {
+  @apply text-primary;
+}
