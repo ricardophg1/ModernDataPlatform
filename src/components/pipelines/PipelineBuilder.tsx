@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Plus, Database, Code2, GitBranch, Settings, Play, Save, Clock, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, Database, Code2, GitBranch, Settings, Save, Clock } from 'lucide-react';
 import { PipelineNode } from './PipelineNode';
 import { NodeConfigModal } from './NodeConfigModal';
 import { PipelineNodeData, Connection, NodeConfig } from '../../types/pipeline';
@@ -9,7 +9,6 @@ export function PipelineBuilder() {
   const [connections, setConnections] = useState<Connection[]>([]);
   const [selectedNode, setSelectedNode] = useState<PipelineNodeData | null>(null);
   const [isConfigModalOpen, setIsConfigModalOpen] = useState(false);
-  const [draggedPosition, setDraggedPosition] = useState({ x: 0, y: 0 });
 
   const handleAddNode = (type: PipelineNodeData['type']) => {
     const newNode: PipelineNodeData = {
@@ -95,7 +94,6 @@ export function PipelineBuilder() {
         className="bg-slate-800 rounded-lg p-6 min-h-[600px] relative"
         onDragOver={(e) => {
           e.preventDefault();
-          setDraggedPosition({ x: e.clientX, y: e.clientY });
         }}
       >
         {nodes.length === 0 ? (

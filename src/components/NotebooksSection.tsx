@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Plus, Search, FileCode, Play, Book, Code2, Sparkles, Brain, GitBranch, Share2, History } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, Search, FileCode, Brain, Share2 } from 'lucide-react';
 import { NewNotebookModal, NotebookData } from './NewNotebookModal';
 import { NotebookEditor } from './NotebookEditor';
 
@@ -15,7 +15,6 @@ interface Notebook {
 }
 
 export function NotebooksSection() {
-  const [activeView, setActiveView] = useState<'grid' | 'list'>('grid');
   const [searchQuery, setSearchQuery] = useState('');
   const [isNewNotebookModalOpen, setIsNewNotebookModalOpen] = useState(false);
   const [selectedNotebook, setSelectedNotebook] = useState<number | null>(null);

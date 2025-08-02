@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { GitBranch, Plus, Play, Save, Clock, Settings } from 'lucide-react';
 
 interface PipelineNode {
