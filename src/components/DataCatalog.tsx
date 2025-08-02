@@ -1,5 +1,5 @@
-import React from 'react';
-import { Database, Table, FileSpreadsheet } from 'lucide-react';
+import { Database, Table /* FileSpreadsheet */ } from 'lucide-react';
+// FileSpreadsheet icon reserved for future file-based entries
 
 export function DataCatalog() {
   const databases = [

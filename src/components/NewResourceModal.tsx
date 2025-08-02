@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, FileCode, BarChart2, GitBranch, Database, Terminal, Brain, Sparkles } from 'lucide-react';
+import { X, BarChart2, GitBranch, Database, Terminal, Brain, Sparkles } from 'lucide-react';
+// import { FileCode } from 'lucide-react'; // Placeholder for future file-based resources
 
 interface ResourceData {
   type: string;
@@ -12,7 +12,6 @@ interface NewResourceModalProps {
 }
 
 export function NewResourceModal({ isOpen, onClose, onCreateResource }: NewResourceModalProps) {
-  const [selectedType, setSelectedType] = useState('');
 
   if (!isOpen) return null;
 

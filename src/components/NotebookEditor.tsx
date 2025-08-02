@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Play, Save, Download, Plus, Brain, MessageSquare, Code2, Database, Table, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import { Play, Save, Download, Brain, MessageSquare, Code2, Database, Table } from 'lucide-react';
+// import { Plus, ChevronRight } from 'lucide-react'; // Icons planned for future toolbar/navigation features
 import { AIAssistant } from './AIAssistant';
 import { CodeCell } from './notebook/CodeCell';
 import { ExecutionResult } from './notebook/CodeInterpreter';
@@ -42,14 +43,6 @@ export function NotebookEditor() {
     setCells(cells.map(cell => 
       cell.id === id ? { ...cell, ...updates } : cell
     ));
-  };
-
-  const executeCell = async (id: string) => {
-    const cell = cells.find(c => c.id === id);
-    if (!cell) return;
-
-    // Execution is now handled by the CodeCell component
-    // This method can be used for batch execution
   };
 
   const renderCellContent = (cell: Cell) => {
