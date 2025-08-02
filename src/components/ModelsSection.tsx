@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Plus, Search, Brain, Sparkles, GitBranch, History, Play, Settings, Database, ChevronRight, BarChart2, AlertCircle, Clock } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, Search, Brain, Sparkles, GitBranch, History, Play, Settings } from 'lucide-react';
 import { NewModelModal, NewModelData } from './models/NewModelModal';
 import { ModelTrainingView } from './models/ModelTrainingView';
 import { AutoMLView } from './models/AutoMLView';
@@ -22,7 +22,6 @@ interface Model {
 
 export function ModelsSection() {
   const [activeView, setActiveView] = useState<'list' | 'train' | 'automl' | 'deploy'>('list');
-  const [selectedModel, setSelectedModel] = useState<string | null>(null);
   const [isNewModelModalOpen, setIsNewModelModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 

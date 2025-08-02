@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Plus, Search, Clock, Play, Pause, RotateCcw, AlertCircle, Calendar, GitBranch, Settings, ChevronRight, X } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, Search, Clock, Play, Pause, RotateCcw, AlertCircle, GitBranch, Settings, X } from 'lucide-react';
 
 interface Job {
   id: number;
@@ -72,15 +72,6 @@ export function JobsSection() {
       }
       return job;
     }));
-  };
-
-  const handleCreateJob = (newJob: Omit<Job, 'id'>) => {
-    const job: Job = {
-      ...newJob,
-      id: Math.max(...jobs.map(j => j.id)) + 1,
-    };
-    setJobs([...jobs, job]);
-    setIsNewJobModalOpen(false);
   };
 
   const filteredJobs = jobs.filter(job =>
