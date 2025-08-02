@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Play, Save, Download, Database, Table, ChevronRight, Code2, Brain } from 'lucide-react';
+import { useState } from 'react';
+import { Play, Save, Download, Database, ChevronRight, Code2, Brain } from 'lucide-react';
 
 export function QuerySection() {
   const [query, setQuery] = useState('');
