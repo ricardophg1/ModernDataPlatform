@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { Bot, Send, Sparkles, X, Brain } from 'lucide-react';
 
 interface Message {
@@ -26,38 +26,41 @@ export function AIAssistant({ context }: AIAssistantProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
-  const contextBasedSuggestions = {
-    data: [
-      "Help me optimize this query",
-      "Analyze this dataset for patterns",
-      "Suggest data cleaning steps",
-      "Generate a data validation script"
-    ],
-    notebooks: [
-      "Debug this code block",
-      "Explain this algorithm",
-      "Optimize this function",
-      "Suggest improvements"
-    ],
-    pipelines: [
-      "Design a new pipeline",
-      "Optimize pipeline performance",
-      "Add error handling",
-      "Suggest monitoring metrics"
-    ],
-    models: [
-      "Help tune hyperparameters",
-      "Analyze model performance",
-      "Suggest feature engineering",
-      "Explain model predictions"
-    ]
-  };
+  const contextBasedSuggestions = useMemo(
+    () => ({
+      data: [
+        "Help me optimize this query",
+        "Analyze this dataset for patterns",
+        "Suggest data cleaning steps",
+        "Generate a data validation script",
+      ],
+      notebooks: [
+        "Debug this code block",
+        "Explain this algorithm",
+        "Optimize this function",
+        "Suggest improvements",
+      ],
+      pipelines: [
+        "Design a new pipeline",
+        "Optimize pipeline performance",
+        "Add error handling",
+        "Suggest monitoring metrics",
+      ],
+      models: [
+        "Help tune hyperparameters",
+        "Analyze model performance",
+        "Suggest feature engineering",
+        "Explain model predictions",
+      ],
+    }),
+    []
+  );
 
   useEffect(() => {
     if (context?.currentView) {
       setSuggestions(contextBasedSuggestions[context.currentView as keyof typeof contextBasedSuggestions] || []);
     }
-  }, [context?.currentView]);
+  }, [context?.currentView, contextBasedSuggestions]);
 
   useEffect(() => {
     scrollToBottom();
