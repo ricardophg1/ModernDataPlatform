@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Play, Loader2, XCircle } from 'lucide-react';
 
 export type ExecutionResult =

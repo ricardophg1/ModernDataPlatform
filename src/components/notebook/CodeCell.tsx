@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Code2 } from 'lucide-react';
 import { CodeInterpreter, ExecutionResult } from './CodeInterpreter';
 
@@ -23,7 +23,7 @@ export function CodeCell({ id, language, initialCode = '', onChange }: CodeCellP
   };
 
   return (
-    <div className="space-y-2">
+    <div id={id} className="space-y-2">
       {/* Code Editor */}
       <div className="relative">
         <div className="absolute left-4 top-4">
