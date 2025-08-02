@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Brain, Search, BarChart2, Table, FileText, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { Brain, BarChart2, Table, FileText } from 'lucide-react';
 
 export function AIAnalysisSection() {
   const [prompt, setPrompt] = useState('');

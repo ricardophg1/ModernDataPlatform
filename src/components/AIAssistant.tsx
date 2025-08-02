@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Bot, Send, Sparkles, X, Brain, Code2, Database, GitBranch, Search } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Bot, Send, Sparkles, X, Brain } from 'lucide-react';
 
 interface Message {
   id: string;

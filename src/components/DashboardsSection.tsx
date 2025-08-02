@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Plus, Search, BarChart2, PieChart, LineChart, Share2, Calendar, Filter, Download, RefreshCw, Clock } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, BarChart2, PieChart, LineChart, Calendar, Filter, Download, RefreshCw, Clock } from 'lucide-react';
 import { AnalyticsDashboard } from './dashboards/AnalyticsDashboard';
 import { MetricCard } from './dashboards/MetricCard';
 

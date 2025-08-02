@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Plus, Search, Filter, Upload, Database, Link } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, Search } from 'lucide-react';
 import { DataCatalog } from './DataCatalog';
 import { DatabaseArchitecture } from './data/DatabaseArchitecture';
 import { DataFlowVisualizer } from './data/DataFlowVisualizer';
