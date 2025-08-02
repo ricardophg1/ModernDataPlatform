@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowLeft, Brain, Play, Settings, Save, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowLeft, Brain, Play, ChevronRight } from 'lucide-react';
 
 interface ModelTrainingViewProps {
   onBack: () => void;
@@ -7,7 +7,8 @@ interface ModelTrainingViewProps {
 
 export function ModelTrainingView({ onBack }: ModelTrainingViewProps) {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('');
-  const [hyperparameters, setHyperparameters] = useState({});
+  // TODO: Add hyperparameter state management when configuration is implemented
+  // const [hyperparameters, setHyperparameters] = useState({});
   const [isTraining, setIsTraining] = useState(false);
 
   const algorithms = [

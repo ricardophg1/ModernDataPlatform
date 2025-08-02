@@ -1,11 +1,7 @@
-import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar } from 'recharts';
 
-interface AnalyticsDashboardProps {
-  dateRange: string;
-}
-
-export function AnalyticsDashboard({ dateRange }: AnalyticsDashboardProps) {
+// TODO: Accept date range to filter dashboard data
+export function AnalyticsDashboard() {
   // Sample data - in a real app, this would come from your API
   const userActivityData = [
     { date: '2024-03-10', users: 2400, sessions: 4000 },
@@ -69,7 +65,7 @@ export function AnalyticsDashboard({ dateRange }: AnalyticsDashboardProps) {
                   paddingAngle={5}
                   dataKey="value"
                 >
-                  {trafficSourcesData.map((entry, index) => (
+                  {trafficSourcesData.map((_, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
