@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Search, FileCode, Play, Book, Code2, Sparkles, Brain, GitBranch, Share2, History } from 'lucide-react';
-import { NewNotebookModal } from './NewNotebookModal';
+import { NewNotebookModal, NotebookData } from './NewNotebookModal';
 import { NotebookEditor } from './NotebookEditor';
 
 interface Notebook {
@@ -52,7 +52,7 @@ export function NotebooksSection() {
     },
   ]);
 
-  const handleCreateNotebook = (notebookData: any) => {
+  const handleCreateNotebook = (notebookData: NotebookData) => {
     const newNotebook: Notebook = {
       id: notebooks.length + 1,
       name: notebookData.name,

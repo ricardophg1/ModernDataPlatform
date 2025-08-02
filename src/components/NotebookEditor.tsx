@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Play, Save, Download, Plus, Brain, MessageSquare, Code2, Database, Table, ChevronRight } from 'lucide-react';
 import { AIAssistant } from './AIAssistant';
 import { CodeCell } from './notebook/CodeCell';
+import { ExecutionResult } from './notebook/CodeInterpreter';
 
 interface Cell {
   id: string;
   type: 'markdown' | 'python' | 'sql' | 'visualization';
   content: string;
-  output?: any;
+  output?: ExecutionResult;
   metadata?: {
     database?: string;
     table?: string;

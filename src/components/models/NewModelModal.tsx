@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import { X, Brain, Database, GitBranch, Sparkles } from 'lucide-react';
 
+export interface NewModelData {
+  name: string;
+  type: 'classification' | 'regression' | 'recommendation';
+  description: string;
+  dataset: string;
+  target: string;
+}
+
 interface NewModelModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onCreate: (modelData: any) => void;
+  onCreate: (modelData: NewModelData) => void;
 }
 
 export function NewModelModal({ isOpen, onClose, onCreate }: NewModelModalProps) {
-  const [modelData, setModelData] = useState({
+  const [modelData, setModelData] = useState<NewModelData>({
     name: '',
     type: 'classification',
     description: '',

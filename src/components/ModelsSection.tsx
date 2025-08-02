@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Search, Brain, Sparkles, GitBranch, History, Play, Settings, Database, ChevronRight, BarChart2, AlertCircle, Clock } from 'lucide-react';
-import { NewModelModal } from './models/NewModelModal';
+import { NewModelModal, NewModelData } from './models/NewModelModal';
 import { ModelTrainingView } from './models/ModelTrainingView';
 import { AutoMLView } from './models/AutoMLView';
 import { ModelDeploymentView } from './models/ModelDeploymentView';
@@ -64,7 +64,7 @@ export function ModelsSection() {
     }
   ];
 
-  const handleCreateModel = (modelData: any) => {
+  const handleCreateModel = (modelData: NewModelData) => {
     console.log('Creating new model:', modelData);
     setIsNewModelModalOpen(false);
   };

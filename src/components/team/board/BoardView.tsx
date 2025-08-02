@@ -141,7 +141,7 @@ export function BoardView({ boardId, boardType }: BoardViewProps) {
     setSearchQuery(query.toLowerCase());
   };
 
-  const handleFilterChange = (filters: any) => {
+  const handleFilterChange = (filters: Record<string, unknown>) => {
     // Implement filter logic
   };
 

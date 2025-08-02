@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Code2 } from 'lucide-react';
-import { CodeInterpreter } from './CodeInterpreter';
+import { CodeInterpreter, ExecutionResult } from './CodeInterpreter';
 
 interface CodeCellProps {
   id: string;
@@ -11,14 +11,14 @@ interface CodeCellProps {
 
 export function CodeCell({ id, language, initialCode = '', onChange }: CodeCellProps) {
   const [code, setCode] = useState(initialCode);
-  const [output, setOutput] = useState<any>(null);
+  const [output, setOutput] = useState<ExecutionResult | null>(null);
 
   const handleCodeChange = (newCode: string) => {
     setCode(newCode);
     onChange?.(newCode);
   };
 
-  const handleResult = (result: any) => {
+  const handleResult = (result: ExecutionResult) => {
     setOutput(result);
   };
 
@@ -68,14 +68,11 @@ export function CodeCell({ id, language, initialCode = '', onChange }: CodeCellP
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-700">
-                  {output.content.map((row: any, i: number) => (
+                  {output.content.map((row: Record<string, unknown>, i: number) => (
                     <tr key={i}>
-                      {Object.values(row).map((value: any, j: number) => (
-                        <td
-                          key={j}
-                          className="px-4 py-2 text-sm text-slate-300"
-                        >
-                          {value}
+                      {Object.values(row).map((value: unknown, j: number) => (
+                        <td key={j} className="px-4 py-2 text-sm text-slate-300">
+                          {String(value)}
                         </td>
                       ))}
                     </tr>

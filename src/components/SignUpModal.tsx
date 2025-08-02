@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { Github, Linkedin, Loader2, Mail, X } from 'lucide-react';
 import { useAuth0 } from '@auth0/auth0-react';
 
+interface SignUpData {
+  provider: string;
+}
+
 interface SignUpModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSignUp: (data: any) => void;
+  onSignUp: (data: SignUpData) => void;
 }
 
 export function SignUpModal({ isOpen, onClose, onSignUp }: SignUpModalProps) {

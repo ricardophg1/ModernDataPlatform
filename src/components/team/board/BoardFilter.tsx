@@ -1,9 +1,11 @@
 import React from 'react';
 import { Search, Filter, SortAsc, User } from 'lucide-react';
 
+type FilterOptions = Record<string, unknown>;
+
 interface BoardFilterProps {
   onSearch: (query: string) => void;
-  onFilterChange: (filters: any) => void;
+  onFilterChange: (filters: FilterOptions) => void;
 }
 
 export function BoardFilter({ onSearch, onFilterChange }: BoardFilterProps) {

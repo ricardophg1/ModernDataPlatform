@@ -3,7 +3,7 @@ import { Play, Save, Download, Database, Table, ChevronRight, Code2 } from 'luci
 
 interface QueryResult {
   columns: string[];
-  rows: any[];
+  rows: Record<string, unknown>[];
 }
 
 export function QueryEditor() {
@@ -113,7 +113,7 @@ export function QueryEditor() {
                           key={column}
                           className="px-6 py-4 whitespace-nowrap text-sm text-slate-300"
                         >
-                          {row[column]}
+                          {String(row[column])}
                         </td>
                       ))}
                     </tr>

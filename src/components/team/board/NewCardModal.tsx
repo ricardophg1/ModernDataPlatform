@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
 import { X, Plus } from 'lucide-react';
 
+interface CardInput {
+  type: 'story' | 'task' | 'bug' | 'epic';
+  title: string;
+  description: string;
+  priority: 'lowest' | 'low' | 'medium' | 'high' | 'highest';
+  labels: string[];
+  estimate: number;
+}
+
 interface NewCardModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onCreate: (card: any) => void;
+  onCreate: (card: CardInput) => void;
 }
 
 export function NewCardModal({ isOpen, onClose, onCreate }: NewCardModalProps) {
-  const [cardData, setCardData] = useState({
+  const [cardData, setCardData] = useState<CardInput>({
     type: 'task',
     title: '',
     description: '',
     priority: 'medium',
-    labels: [] as string[],
+    labels: [],
     estimate: 0
   });
 

@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { X, FileCode, BarChart2, GitBranch, Database, Terminal, Brain, Sparkles } from 'lucide-react';
 
+interface ResourceData {
+  type: string;
+}
+
 interface NewResourceModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onCreateResource: (resource: any) => void;
+  onCreateResource: (resource: ResourceData) => void;
 }
 
 export function NewResourceModal({ isOpen, onClose, onCreateResource }: NewResourceModalProps) {
