@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Play, Loader2, XCircle } from 'lucide-react';
 
+export type ExecutionResult =
+  | { type: 'output'; content: string }
+  | { type: 'table'; content: Record<string, unknown>[] };
+
 interface CodeInterpreterProps {
   code: string;
   language: 'python' | 'sql';
-  onResult: (result: any) => void;
+  onResult: (result: ExecutionResult) => void;
 }
 
 export function CodeInterpreter({ code, language, onResult }: CodeInterpreterProps) {
@@ -27,7 +31,7 @@ export function CodeInterpreter({ code, language, onResult }: CodeInterpreterPro
     }
   };
 
-  const simulateExecution = async (code: string, lang: string): Promise<any> => {
+  const simulateExecution = async (code: string, lang: string): Promise<ExecutionResult> => {
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     if (lang === 'python') {

@@ -2,29 +2,17 @@ import React, { useState } from 'react';
 import { Plus, Database, Code2, GitBranch, Settings, Play, Save, Clock, ArrowRight } from 'lucide-react';
 import { PipelineNode } from './PipelineNode';
 import { NodeConfigModal } from './NodeConfigModal';
-
-interface Node {
-  id: string;
-  type: 'source' | 'transform' | 'destination';
-  name: string;
-  config: any;
-  position: { x: number; y: number };
-}
-
-interface Connection {
-  from: string;
-  to: string;
-}
+import { PipelineNodeData, Connection, NodeConfig } from '../../types/pipeline';
 
 export function PipelineBuilder() {
-  const [nodes, setNodes] = useState<Node[]>([]);
+  const [nodes, setNodes] = useState<PipelineNodeData[]>([]);
   const [connections, setConnections] = useState<Connection[]>([]);
-  const [selectedNode, setSelectedNode] = useState<Node | null>(null);
+  const [selectedNode, setSelectedNode] = useState<PipelineNodeData | null>(null);
   const [isConfigModalOpen, setIsConfigModalOpen] = useState(false);
   const [draggedPosition, setDraggedPosition] = useState({ x: 0, y: 0 });
 
-  const handleAddNode = (type: Node['type']) => {
-    const newNode: Node = {
+  const handleAddNode = (type: PipelineNodeData['type']) => {
+    const newNode: PipelineNodeData = {
       id: Date.now().toString(),
       type,
       name: `New ${type} node`,
@@ -35,7 +23,7 @@ export function PipelineBuilder() {
   };
 
   const handleNodeDrag = (nodeId: string, position: { x: number; y: number }) => {
-    setNodes(nodes.map(node => 
+    setNodes(nodes.map(node =>
       node.id === nodeId ? { ...node, position } : node
     ));
   };
@@ -46,7 +34,7 @@ export function PipelineBuilder() {
     }
   };
 
-  const handleNodeConfigure = (node: Node) => {
+  const handleNodeConfigure = (node: PipelineNodeData) => {
     setSelectedNode(node);
     setIsConfigModalOpen(true);
   };
@@ -161,9 +149,9 @@ export function PipelineBuilder() {
           isOpen={isConfigModalOpen}
           onClose={() => setIsConfigModalOpen(false)}
           node={selectedNode}
-          onSave={(config) => {
+          onSave={(config: NodeConfig) => {
             setNodes(nodes.map(n =>
-              n.id === selectedNode.id ? { ...n, config } : n
+              n.id === selectedNode.id ? { ...n, name: config.name ?? n.name, config } : n
             ));
             setIsConfigModalOpen(false);
           }}

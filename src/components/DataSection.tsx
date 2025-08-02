@@ -4,8 +4,8 @@ import { DataCatalog } from './DataCatalog';
 import { DatabaseArchitecture } from './data/DatabaseArchitecture';
 import { DataFlowVisualizer } from './data/DataFlowVisualizer';
 import { UploadDataModal } from './data/UploadDataModal';
-import { ConnectDatabaseModal } from './data/ConnectDatabaseModal';
-import { APIIntegrationModal } from './data/APIIntegrationModal';
+import { ConnectDatabaseModal, DatabaseConfig } from './data/ConnectDatabaseModal';
+import { APIIntegrationModal, APIConfig } from './data/APIIntegrationModal';
 
 export function DataSection() {
   const [view, setView] = useState('architecture');
@@ -17,11 +17,11 @@ export function DataSection() {
     console.log('Uploading file:', file.name);
   };
 
-  const handleDatabaseConnect = (config: any) => {
+  const handleDatabaseConnect = (config: DatabaseConfig) => {
     console.log('Connecting to database:', config);
   };
 
-  const handleAPIConnect = (config: any) => {
+  const handleAPIConnect = (config: APIConfig) => {
     console.log('Connecting to API:', config);
   };
 

@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import { X, Database, Code2, GitBranch } from 'lucide-react';
-
-interface Node {
-  id: string;
-  type: 'source' | 'transform' | 'destination';
-  name: string;
-  config: any;
-}
+import { PipelineNodeData, NodeConfig } from '../../types/pipeline';
 
 interface NodeConfigModalProps {
   isOpen: boolean;
   onClose: () => void;
-  node: Node;
-  onSave: (config: any) => void;
+  node: PipelineNodeData;
+  onSave: (config: NodeConfig) => void;
 }
 
 export function NodeConfigModal({ isOpen, onClose, node, onSave }: NodeConfigModalProps) {
-  const [config, setConfig] = useState(node.config);
+  const [config, setConfig] = useState<NodeConfig>(node.config);
   const [name, setName] = useState(node.name);
 
   if (!isOpen) return null;

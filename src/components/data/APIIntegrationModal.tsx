@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import { X, Link, Key, Globe, Clock } from 'lucide-react';
 
+export interface APIConfig {
+  name: string;
+  baseUrl: string;
+  apiKey: string;
+  authType: string;
+  refreshInterval: string;
+}
+
 interface APIIntegrationModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onConnect: (config: any) => void;
+  onConnect: (config: APIConfig) => void;
 }
 
 export function APIIntegrationModal({ isOpen, onClose, onConnect }: APIIntegrationModalProps) {
-  const [config, setConfig] = useState({
+  const [config, setConfig] = useState<APIConfig>({
     name: '',
     baseUrl: '',
     apiKey: '',

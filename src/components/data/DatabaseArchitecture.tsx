@@ -154,7 +154,7 @@ export function DatabaseArchitecture() {
           <div className="flex items-center space-x-4">
             <select
               value={view}
-              onChange={(e) => setView(e.target.value as any)}
+              onChange={(e) => setView(e.target.value as 'er' | 'flow' | '3d')}
               className="bg-slate-700 text-white px-3 py-1.5 rounded-lg"
             >
               <option value="er">ER Diagram</option>

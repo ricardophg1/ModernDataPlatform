@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
 import { X, Database, Key, Server, Lock } from 'lucide-react';
 
+interface DatabaseConfigBase {
+  host: string;
+  port: string;
+  database: string;
+  username: string;
+  password: string;
+  ssl: boolean;
+}
+
+export interface DatabaseConfig extends DatabaseConfigBase {
+  type: string;
+}
+
 interface ConnectDatabaseModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onConnect: (config: any) => void;
+  onConnect: (config: DatabaseConfig) => void;
 }
 
 export function ConnectDatabaseModal({ isOpen, onClose, onConnect }: ConnectDatabaseModalProps) {
   const [dbType, setDbType] = useState('postgresql');
-  const [config, setConfig] = useState({
+  const [config, setConfig] = useState<DatabaseConfigBase>({
     host: '',
     port: '',
     database: '',
@@ -22,7 +35,8 @@ export function ConnectDatabaseModal({ isOpen, onClose, onConnect }: ConnectData
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onConnect({ ...config, type: dbType });
+    const fullConfig: DatabaseConfig = { ...config, type: dbType };
+    onConnect(fullConfig);
     onClose();
   };
 

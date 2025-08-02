@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { X, FileCode, Wand2, GitBranch, Book, Brain } from 'lucide-react';
 
+export interface NotebookData {
+  name: string;
+  description: string;
+  template: string;
+  created: Date;
+}
+
 interface NewNotebookModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onCreate: (notebook: any) => void;
+  onCreate: (notebook: NotebookData) => void;
 }
 
 export function NewNotebookModal({ isOpen, onClose, onCreate }: NewNotebookModalProps) {

@@ -13,7 +13,7 @@ interface Message {
 interface AIAssistantProps {
   context?: {
     currentView?: string;
-    selectedData?: any;
+    selectedData?: unknown;
     activeProject?: string;
   };
 }
