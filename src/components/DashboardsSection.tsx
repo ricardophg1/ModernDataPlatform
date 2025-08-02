@@ -96,7 +96,7 @@ export function DashboardsSection() {
       </div>
 
       {/* Main Dashboard */}
-      <AnalyticsDashboard dateRange={dateRange} />
+      <AnalyticsDashboard />
     </div>
   );
 }
