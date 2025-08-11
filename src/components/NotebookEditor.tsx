@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Play, Save, Download, Brain, MessageSquare, Code2, Database, Table } from 'lucide-react';
+import { Play, Save, Download, Brain, MessageSquare, Code2, Database, Table, Trash2 } from 'lucide-react';
 // import { Plus, ChevronRight } from 'lucide-react'; // Icons planned for future toolbar/navigation features
+import ReactMarkdown from 'react-markdown';
 import { AIAssistant } from './AIAssistant';
 import { CodeCell } from './notebook/CodeCell';
 import { ExecutionResult } from './notebook/CodeInterpreter';
@@ -45,6 +46,10 @@ export function NotebookEditor() {
     ));
   };
 
+  const deleteCell = (id: string) => {
+    setCells(cells.filter(cell => cell.id !== id));
+  };
+
   const renderCellContent = (cell: Cell) => {
     switch (cell.type) {
       case 'python':
@@ -58,14 +63,22 @@ export function NotebookEditor() {
           />
         );
       case 'markdown':
+        if (activeCell === cell.id) {
+          return (
+            <textarea
+              value={cell.content}
+              onChange={(e) => updateCell(cell.id, { content: e.target.value })}
+              placeholder="Enter markdown content..."
+              className="w-full bg-transparent text-white font-mono resize-none focus:outline-none"
+              rows={Math.max(5, cell.content.split('\n').length)}
+              autoFocus
+            />
+          );
+        }
         return (
-          <textarea
-            value={cell.content}
-            onChange={(e) => updateCell(cell.id, { content: e.target.value })}
-            placeholder="Enter markdown content..."
-            className="w-full bg-transparent text-white font-mono resize-none focus:outline-none"
-            rows={5}
-          />
+          <div className="prose prose-invert min-h-[5rem]">
+            <ReactMarkdown>{cell.content || "Click to edit..."}</ReactMarkdown>
+          </div>
         );
       default:
         return null;
@@ -151,6 +164,15 @@ export function NotebookEditor() {
                 {cell.type === 'visualization' && <Table className="h-4 w-4 text-orange-400" />}
                 <span className="text-sm text-slate-400 capitalize">{cell.type}</span>
               </div>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteCell(cell.id);
+                }}
+                className="p-1 hover:bg-slate-600 rounded"
+              >
+                <Trash2 className="h-4 w-4 text-slate-400 hover:text-red-400" />
+              </button>
             </div>
             <div className="p-4">
               {renderCellContent(cell)}
